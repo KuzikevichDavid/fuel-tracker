@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 18% 14%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 18% 14%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 32 95% 50%;
+    --primary-foreground: 220 20% 10%;
+
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 32 100% 45%;
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 18%;
+    --ring: 32 95% 50%;
+
+    --radius: 1rem;
+
+    /* Custom design tokens */
+    --glow-primary: 0 0 30px hsl(32 95% 50% / 0.4);
+    --glow-success: 0 0 30px hsl(142 70% 45% / 0.4);
+    --gradient-dashboard: linear-gradient(180deg, hsl(220 20% 12%) 0%, hsl(220 20% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 18% 16%) 0%, hsl(220 18% 12%) 100%);
+    --gradient-button: linear-gradient(145deg, hsl(32 95% 55%) 0%, hsl(32 95% 45%) 100%);
+    --gradient-button-success: linear-gradient(145deg, hsl(142 70% 50%) 0%, hsl(142 70% 40%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    background: var(--gradient-dashboard);
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .font-display {
+    font-family: 'Orbitron', monospace;
+  }
+}
+
+@layer components {
+  .dashboard-card {
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: 0 4px 20px hsl(0 0% 0% / 0.3);
+  }
+
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-success {
+    box-shadow: var(--glow-success);
+  }
+
+  .digit-display {
+    font-family: 'Orbitron', monospace;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 20px currentColor;
+  }
+
+  .fuel-gauge {
+    background: conic-gradient(
+      from 180deg,
+      hsl(var(--primary)) 0deg,
+      hsl(var(--primary)) calc(var(--fuel-percent, 0) * 1.8deg),
+      hsl(var(--muted)) calc(var(--fuel-percent, 0) * 1.8deg),
+      hsl(var(--muted)) 180deg
+    );
+  }
+}
+
+@layer utilities {
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      filter: brightness(1);
+    }
+    50% {
+      opacity: 0.8;
+      filter: brightness(1.2);
+    }
+  }
+
+  .animate-tracking {
+    animation: tracking-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes tracking-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(142 70% 45% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(142 70% 45% / 0.6);
+    }
+  }
+}
