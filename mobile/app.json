@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.cripper.fueltraker"
     },
     "web": {
       "bundler": "metro",
@@ -36,6 +37,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7d3d1950-c6f7-4a26-902a-48babf3115f5"
+      }
     }
   }
 }
